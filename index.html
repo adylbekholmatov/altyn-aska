@@ -50,7 +50,7 @@
 </svg>
 
 <!-- ===================== КОНВЕРТ ===================== -->
-<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Приглашение в конверте">
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="Приглашение в конверте" data-i18n-attr="aria-label:intro.aria">
   <div class="intro__sky" aria-hidden="true">
     <div class="stars" data-stars="70"></div>
     <svg class="intro__ridge" viewBox="0 0 1440 320" preserveAspectRatio="none">
@@ -59,38 +59,44 @@
     </svg>
   </div>
 
+  <div class="lang intro__lang" role="group" aria-label="Язык · Тил · Language">
+    <button type="button" data-lang="ru" aria-pressed="true">РУС</button>
+    <button type="button" data-lang="ky" aria-pressed="false">КЫР</button>
+    <button type="button" data-lang="en" aria-pressed="false">ENG</button>
+  </div>
+
   <div class="intro__stage">
-    <p class="intro__eyebrow">Вам пришло приглашение</p>
+    <p class="intro__eyebrow" data-i18n="intro.eyebrow">Вам пришло приглашение</p>
 
     <div class="envelope" id="envelope">
       <div class="envelope__back"></div>
 
       <div class="letter" aria-hidden="true">
         <svg class="letter__logo"><use href="#logo"/></svg>
-        <span class="letter__kicker">Приглашение</span>
+        <span class="letter__kicker" data-i18n="intro.kicker">Приглашение</span>
         <span class="letter__date">25 · 09 · 2026</span>
-        <span class="letter__place">Кызыл-Кия</span>
+        <span class="letter__place" data-i18n="city.short">Кызыл-Кия</span>
       </div>
 
       <div class="envelope__pocket" aria-hidden="true">
         <span class="pk pk--l"></span><span class="pk pk--r"></span><span class="pk pk--b"></span>
       </div>
 
-      <div class="envelope__address" aria-hidden="true">
+      <div class="envelope__address" aria-hidden="true" data-i18n="intro.to">
         <span>Кому:</span> <em>Уважаемому гостю</em>
       </div>
 
       <div class="postage" aria-hidden="true">
         <div class="postage__inner">
           <svg class="postage__logo"><use href="#logo"/></svg>
-          <span class="postage__txt">Кыргызстан</span>
+          <span class="postage__txt" data-i18n="intro.stamp">Кыргызстан</span>
           <span class="postage__val">2026</span>
         </div>
       </div>
       <svg class="postmark" viewBox="0 0 120 120" aria-hidden="true">
         <defs><path id="pmCircle" d="M16 60 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
         <circle cx="60" cy="60" r="54"/><circle cx="60" cy="60" r="33"/>
-        <text class="pm-ring"><textPath href="#pmCircle">КЫЗЫЛ-КИЯ · БАТКЕН · КЫРГЫЗСТАН ·</textPath></text>
+        <text class="pm-ring"><textPath href="#pmCircle" data-i18n="intro.postmark">КЫЗЫЛ-КИЯ · БАТКЕН · КЫРГЫЗСТАН ·</textPath></text>
         <text x="60" y="58" text-anchor="middle" class="pm-d">25.09</text>
         <text x="60" y="74" text-anchor="middle" class="pm-y">2026</text>
         <path class="pm-wave" d="M118 44 q9 -6 18 0 t18 0 t18 0 M118 60 q9 -6 18 0 t18 0 t18 0 M118 76 q9 -6 18 0 t18 0 t18 0"/>
@@ -98,33 +104,41 @@
 
       <div class="envelope__flap" aria-hidden="true"><span class="flap"></span></div>
 
-      <button class="seal" id="seal" type="button" aria-label="Открыть приглашение">
+      <button class="seal" id="seal" type="button" aria-label="Открыть приглашение" data-i18n-attr="aria-label:intro.open">
         <span class="seal__half seal__half--l"><svg viewBox="0 0 120 120"><use href="#waxShape"/></svg></span>
         <span class="seal__half seal__half--r"><svg viewBox="0 0 120 120"><use href="#waxShape"/></svg></span>
         <span class="seal__pulse"></span>
       </button>
     </div>
 
-    <p class="intro__hint">Нажмите на печать, чтобы открыть</p>
+    <p class="intro__hint" data-i18n="intro.hint">Нажмите на печать, чтобы открыть</p>
   </div>
 
-  <button class="intro__skip" id="introSkip" type="button">Пропустить →</button>
+  <button class="intro__skip" id="introSkip" type="button" data-i18n="intro.skip">Пропустить →</button>
 </div>
 
 <!-- ===================== САЙТ ===================== -->
 <header class="nav" id="nav">
-  <a class="nav__brand" href="#top" aria-label="Алтын-Аска — наверх">
+  <a class="nav__brand" href="#top" aria-label="Алтын-Аска" data-i18n-attr="aria-label:brand">
     <svg class="nav__logo"><use href="#logo"/></svg>
-    <span>Алтын-Аска</span>
+    <span data-i18n="brand">Алтын-Аска</span>
   </a>
-  <nav class="nav__links" aria-label="Разделы">
-    <a href="#event">Церемония</a>
-    <a href="#project">Проект</a>
-    <a href="#capsule">Капсула</a>
-    <a href="#guests">Гости</a>
-    <a href="#place">Место</a>
+  <nav class="nav__links" aria-label="Разделы" data-i18n-attr="aria-label:nav.aria">
+    <a href="#event" data-i18n="nav.event">Церемония</a>
+    <a href="#project" data-i18n="nav.project">Проект</a>
+    <a href="#gallery" data-i18n="nav.gallery">3D-проект</a>
+    <a href="#capsule" data-i18n="nav.capsule">Капсула</a>
+    <a href="#guests" data-i18n="nav.guests">Гости</a>
+    <a href="#place" data-i18n="nav.place">Место</a>
   </nav>
-  <button class="btn btn--sm btn--gold" type="button" data-ics>В календарь</button>
+  <div class="nav__right">
+    <div class="lang" role="group" aria-label="Язык · Тил · Language">
+      <button type="button" data-lang="ru" aria-pressed="true">РУС</button>
+      <button type="button" data-lang="ky" aria-pressed="false">КЫР</button>
+      <button type="button" data-lang="en" aria-pressed="false">ENG</button>
+    </div>
+    <button class="btn btn--sm btn--gold" type="button" data-ics data-i18n="nav.cal">В календарь</button>
+  </div>
 </header>
 
 <main id="top">
@@ -151,56 +165,49 @@
     </div>
 
     <div class="hero__content">
-      <svg class="hero__logo" role="img" aria-label="Логотип Алтын-Аска"><use href="#logo"/></svg>
-      <p class="hero__brand">Алтын-Аска</p>
-      <p class="hero__sub">Торгово-транспортно-логистический комплекс <span>«Кызыл-Кия»</span></p>
+      <svg class="hero__logo" role="img" aria-label="Логотип Алтын-Аска" data-i18n-attr="aria-label:logo.aria"><use href="#logo"/></svg>
+      <p class="hero__brand" data-i18n="brand">Алтын-Аска</p>
+      <p class="hero__sub" data-i18n="hero.sub">Торгово-транспортно-логистический комплекс <span>«Кызыл-Кия»</span></p>
 
       <h1 class="hero__title">
-        <span class="hero__eyebrow">Приглашение</span>
-        Торжественная церемония<br> закладки первого камня
+        <span class="hero__eyebrow" data-i18n="hero.eyebrow">Приглашение</span>
+        <span data-i18n="hero.title">Торжественная церемония<br> закладки первого камня</span>
       </h1>
 
       <div class="hero__date">
-        <span>Пятница</span>
-        <strong>25 сентября 2026</strong>
+        <span data-i18n="date.weekday">Пятница</span>
+        <strong data-i18n="date.full">25 сентября 2026</strong>
         <span data-time>10:00</span>
       </div>
 
-      <div class="countdown" id="countdown" aria-label="До церемонии осталось">
-        <div><b data-cd="d">00</b><span>дней</span></div>
-        <div><b data-cd="h">00</b><span>часов</span></div>
-        <div><b data-cd="m">00</b><span>минут</span></div>
-        <div><b data-cd="s">00</b><span>секунд</span></div>
+      <div class="countdown" id="countdown" aria-label="До церемонии осталось" data-i18n-attr="aria-label:cd.aria">
+        <div><b data-cd="d">00</b><span data-i18n="cd.d">дней</span></div>
+        <div><b data-cd="h">00</b><span data-i18n="cd.h">часов</span></div>
+        <div><b data-cd="m">00</b><span data-i18n="cd.m">минут</span></div>
+        <div><b data-cd="s">00</b><span data-i18n="cd.s">секунд</span></div>
       </div>
 
       <div class="hero__actions">
-        <a class="btn btn--gold" href="#letter">Читать приглашение</a>
-        <a class="btn btn--ghost" href="#place">Как добраться</a>
+        <a class="btn btn--gold" href="#letter" data-i18n="hero.read">Читать приглашение</a>
+        <a class="btn btn--ghost" href="#place" data-i18n="hero.route">Как добраться</a>
       </div>
     </div>
 
-    <a class="scroll-cue" href="#letter" aria-label="Прокрутить вниз"><span></span></a>
+    <a class="scroll-cue" href="#letter" aria-label="Прокрутить вниз" data-i18n-attr="aria-label:hero.scroll"><span></span></a>
   </section>
 
   <!-- ПИСЬМО -->
   <section class="section section--paper" id="letter">
     <article class="paper reveal">
       <svg class="paper__logo" aria-hidden="true"><use href="#logo"/></svg>
-      <p class="paper__greet">Уважаемые гости!</p>
-      <p>
-        ОсОО <b>«Алтын-Аска»</b> и <b>Мэрия города Кызыл-Кия</b> сердечно приглашают Вас
-        на торжественную церемонию закладки первого камня Торгово-транспортно-логистического
-        комплекса «Кызыл-Кия» — нового экономического сердца юга Кыргызстана.
-      </p>
-      <p>
-        В этот день мы также заложим <b>капсулу времени</b> с обращением к потомкам,
-        которую откроют через 35 лет — в 2061 году.
-      </p>
-      <p>Будем рады разделить этот исторический момент вместе с Вами.</p>
+      <p class="paper__greet" data-i18n="letter.greet">Уважаемые гости!</p>
+      <p data-i18n="letter.p1">ОсОО <b>«Алтын-Аска»</b> и <b>Мэрия города Кызыл-Кия</b> сердечно приглашают Вас на торжественную церемонию закладки первого камня Торгово-транспортно-логистического комплекса «Кызыл-Кия» — нового экономического сердца юга Кыргызстана.</p>
+      <p data-i18n="letter.p2">В этот день мы также заложим <b>капсулу времени</b> с обращением к потомкам, которую откроют через 35 лет — в 2061 году.</p>
+      <p data-i18n="letter.p3">Будем рады разделить этот исторический момент вместе с Вами.</p>
       <div class="paper__sign">
-        <span>С уважением,</span>
-        <strong>Шакиров Байстан Куттугалиевич</strong>
-        <em>Генеральный директор ОсОО «Алтын-Аска»</em>
+        <span data-i18n="letter.regards">С уважением,</span>
+        <strong data-i18n="person.shakirov">Шакиров Байстан Куттугалиевич</strong>
+        <em data-i18n="letter.role">Генеральный директор ОсОО «Алтын-Аска»</em>
       </div>
     </article>
   </section>
@@ -210,36 +217,36 @@
     <div class="container">
       <header class="head reveal">
         <span class="head__num">01</span>
-        <h2>Церемония</h2>
-        <p>Главное для гостя — коротко и понятно.</p>
+        <h2 data-i18n="event.title">Церемония</h2>
+        <p data-i18n="event.lead">Главное для гостя — коротко и понятно.</p>
       </header>
 
       <div class="info">
         <div class="info__card reveal">
           <svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
-          <span class="info__label">Когда</span>
-          <strong>25 сентября 2026</strong>
-          <span>Пятница, начало в <b data-time>10:00</b></span>
+          <span class="info__label" data-i18n="event.when">Когда</span>
+          <strong data-i18n="date.full">25 сентября 2026</strong>
+          <span data-i18n="event.whenSub">Пятница, начало в <b data-time>10:00</b></span>
         </div>
         <div class="info__card reveal">
           <svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          <span class="info__label">Где</span>
-          <strong>г. Кызыл-Кия</strong>
-          <span>Баткенская область, территория строительства ТЛК</span>
+          <span class="info__label" data-i18n="event.where">Где</span>
+          <strong data-i18n="city.full">г. Кызыл-Кия</strong>
+          <span data-i18n="event.whereSub">Баткенская область, территория строительства ТЛК</span>
         </div>
         <div class="info__card reveal">
           <svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>
-          <span class="info__label">Повод</span>
-          <strong>День основания</strong>
-          <span>Закладка первого камня и капсулы времени</span>
+          <span class="info__label" data-i18n="event.why">Повод</span>
+          <strong data-i18n="event.whyTitle">День основания</strong>
+          <span data-i18n="event.whySub">Закладка первого камня и капсулы времени</span>
         </div>
       </div>
 
       <ol class="steps">
-        <li class="reveal"><span class="steps__dot"></span><div><strong>Встреча гостей</strong><p>Регистрация и знакомство с проектом комплекса</p></div></li>
-        <li class="reveal"><span class="steps__dot"></span><div><strong>Торжественное открытие</strong><p>Приветственные слова почётных гостей и аксакалов</p></div></li>
-        <li class="reveal"><span class="steps__dot"></span><div><strong>Закладка первого камня</strong><p>Символическое начало строительства ТЛК «Кызыл-Кия»</p></div></li>
-        <li class="reveal"><span class="steps__dot"></span><div><strong>Капсула времени</strong><p>Обращение к потомкам — вскрыть в 2061 году</p></div></li>
+        <li class="reveal"><span class="steps__dot"></span><div><strong data-i18n="step1.t">Встреча гостей</strong><p data-i18n="step1.d">Регистрация и знакомство с проектом комплекса</p></div></li>
+        <li class="reveal"><span class="steps__dot"></span><div><strong data-i18n="step2.t">Торжественное открытие</strong><p data-i18n="step2.d">Приветственные слова почётных гостей и аксакалов</p></div></li>
+        <li class="reveal"><span class="steps__dot"></span><div><strong data-i18n="step3.t">Закладка первого камня</strong><p data-i18n="step3.d">Символическое начало строительства ТЛК «Кызыл-Кия»</p></div></li>
+        <li class="reveal"><span class="steps__dot"></span><div><strong data-i18n="step4.t">Капсула времени</strong><p data-i18n="step4.d">Обращение к потомкам — вскрыть в 2061 году</p></div></li>
       </ol>
     </div>
   </section>
@@ -249,60 +256,93 @@
     <div class="container">
       <header class="head reveal">
         <span class="head__num">02</span>
-        <h2>Что мы строим</h2>
-        <p>Это не просто рынок. Это новая точка роста всей Баткенской области — здесь будут работать, торговать и зарабатывать тысячи семей.</p>
+        <h2 data-i18n="project.title">Что мы строим</h2>
+        <p data-i18n="project.lead">Это не просто рынок. Это новая точка роста всей Баткенской области — здесь будут работать, торговать и зарабатывать тысячи семей.</p>
       </header>
 
       <div class="about">
         <figure class="about__poster reveal">
-          <img src="assets/poster.jpg" alt="Фирменный знак Алтын-Аска на фоне гор" loading="lazy" width="1000" height="993">
-          <figcaption>Люди · Товары · Возможности · Развитие</figcaption>
+          <img src="assets/poster.jpg" alt="Фирменный знак Алтын-Аска на фоне гор" data-i18n-attr="alt:poster.alt" loading="lazy" width="1000" height="993">
+          <figcaption data-i18n="tagline">Люди · Товары · Возможности · Развитие</figcaption>
         </figure>
 
         <div class="stats">
-          <div class="stat reveal"><b data-count="13">0</b><i>га</i><span>площадь участка</span></div>
-          <div class="stat reveal"><b data-count="84320">0</b><i>м²</i><span>площадь застройки</span></div>
-          <div class="stat reveal"><b data-count="2386">0</b><span>торговых мест</span></div>
-          <div class="stat reveal"><b data-count="1250">0</b><span>машиномест</span></div>
-          <div class="stat reveal"><b data-count="150">0</b><i>+</i><span>постоянных рабочих мест</span></div>
-          <div class="stat reveal"><b data-count="36">0</b><i>млн $</i><span>инвестиций · 3,15 млрд сом</span></div>
+          <div class="stat reveal"><b data-count="13">0</b><i data-i18n="unit.ha">га</i><span data-i18n="stat.land">площадь участка</span></div>
+          <div class="stat reveal"><b data-count="84320">0</b><i data-i18n="unit.m2">м²</i><span data-i18n="stat.built">площадь застройки</span></div>
+          <div class="stat reveal"><b data-count="2386">0</b><span data-i18n="stat.retail">торговых мест</span></div>
+          <div class="stat reveal"><b data-count="1250">0</b><span data-i18n="stat.parking">машиномест</span></div>
+          <div class="stat reveal"><b data-count="150">0</b><i>+</i><span data-i18n="stat.jobs">постоянных рабочих мест</span></div>
+          <div class="stat reveal"><b data-count="36">0</b><i data-i18n="unit.musd">млн $</i><span data-i18n="stat.invest">инвестиций · 3,15 млрд сом</span></div>
         </div>
       </div>
 
       <div class="zones">
         <div class="zone reveal">
-          <span class="zone__n">43 000 м²</span><h3>Крытые павильоны</h3>
-          <p>1 166 торговых мест: сельхозпродукция, промтовары, текстиль</p>
+          <span class="zone__n" data-i18n="zone1.n">43 000 м²</span><h3 data-i18n="zone1.t">Крытые павильоны</h3>
+          <p data-i18n="zone1.d">1 166 торговых мест: сельхозпродукция, промтовары, текстиль</p>
         </div>
         <div class="zone reveal">
-          <span class="zone__n">15 000 м²</span><h3>Открытый торговый двор</h3>
-          <p>1 220 мест под навесами, фермерский рынок</p>
+          <span class="zone__n" data-i18n="zone2.n">15 000 м²</span><h3 data-i18n="zone2.t">Открытый торговый двор</h3>
+          <p data-i18n="zone2.d">1 220 мест под навесами, фермерский рынок</p>
         </div>
         <div class="zone reveal">
-          <span class="zone__n">8 200 т</span><h3>Оптовый склад</h3>
-          <p>Холодильные камеры на 3 200 т, сухой склад на 5 000 т, паллетирование</p>
+          <span class="zone__n" data-i18n="zone3.n">8 200 т</span><h3 data-i18n="zone3.t">Оптовый склад</h3>
+          <p data-i18n="zone3.d">Холодильные камеры на 3 200 т, сухой склад на 5 000 т, паллетирование</p>
         </div>
         <div class="zone reveal">
-          <span class="zone__n">6 000 м²</span><h3>Грузовой терминал TIR</h3>
-          <p>Стоянка на 80 грузовиков, весовой контроль, дезинфекция</p>
+          <span class="zone__n" data-i18n="zone4.n">6 000 м²</span><h3 data-i18n="zone4.t">Грузовой терминал TIR</h3>
+          <p data-i18n="zone4.d">Стоянка на 80 грузовиков, весовой контроль, дезинфекция</p>
         </div>
         <div class="zone reveal">
-          <span class="zone__n">23 500 м²</span><h3>Автостоянка</h3>
-          <p>1 250 машиномест для покупателей</p>
+          <span class="zone__n" data-i18n="zone5.n">23 500 м²</span><h3 data-i18n="zone5.t">Автостоянка</h3>
+          <p data-i18n="zone5.d">1 250 машиномест для покупателей</p>
         </div>
         <div class="zone reveal">
-          <span class="zone__n">15 700 м²</span><h3>Административный блок</h3>
-          <p>Офисы, банки, переговорные, игровые зоны</p>
+          <span class="zone__n" data-i18n="zone6.n">15 700 м²</span><h3 data-i18n="zone6.t">Административный блок</h3>
+          <p data-i18n="zone6.d">Офисы, банки, переговорные, игровые зоны</p>
         </div>
         <div class="zone reveal">
-          <span class="zone__n">9 800 м²</span><h3>Сервисный блок</h3>
-          <p>Кафе, аптека, ветпункт, сервисные боксы</p>
+          <span class="zone__n" data-i18n="zone7.n">9 800 м²</span><h3 data-i18n="zone7.t">Сервисный блок</h3>
+          <p data-i18n="zone7.d">Кафе, аптека, ветпункт, сервисные боксы</p>
         </div>
         <div class="zone zone--accent reveal">
-          <span class="zone__n">35 лет</span><h3>Соглашение о ГЧП №44</h3>
-          <p>ОсОО «Алтын-Аска» и Мэрия г. Кызыл-Кия. В 2061 году объект передаётся городу</p>
+          <span class="zone__n" data-i18n="zone8.n">35 лет</span><h3 data-i18n="zone8.t">Соглашение о ГЧП №44</h3>
+          <p data-i18n="zone8.d">ОсОО «Алтын-Аска» и Мэрия г. Кызыл-Кия. В 2061 году объект передаётся городу</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 3D-ГАЛЕРЕЯ -->
+  <section class="section gallery" id="gallery">
+    <div class="container">
+      <header class="head head--center reveal">
+        <span class="head__num">03</span>
+        <h2 data-i18n="gallery.title">Облик комплекса</h2>
+        <p data-i18n="gallery.lead">Архитектурные 3D-визуализации эскизного проекта. Листайте, перетаскивайте или нажмите на изображение, чтобы открыть его крупно.</p>
+      </header>
+    </div>
+
+    <div class="cf-scene">
+      <div class="cf" id="cf" role="region" aria-roledescription="carousel" aria-label="Облик комплекса" data-i18n-attr="aria-label:gallery.title"></div>
+    </div>
+
+    <div class="container">
+      <div class="cf-info">
+        <button class="cf-btn" id="cfPrev" type="button" aria-label="Предыдущее" data-i18n-attr="aria-label:gallery.prev">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="cf-cap" id="cfCap" aria-live="polite">
+          <span class="cf-cap__meta"><span id="cfCount">01 / 08</span> · <span id="cfCode">AP-6</span></span>
+          <h3 id="cfTitle"></h3>
+          <p id="cfDesc"></p>
+        </div>
+        <button class="cf-btn" id="cfNext" type="button" aria-label="Следующее" data-i18n-attr="aria-label:gallery.next">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="cf-dots" id="cfDots"></div>
+      <p class="cf-note" data-i18n="gallery.note">Эскизный проект · архитектурная визуализация</p>
     </div>
   </section>
 
@@ -310,7 +350,7 @@
   <section class="quote">
     <blockquote class="reveal">
       <span class="quote__mark" aria-hidden="true">“</span>
-      Кызыл-Кия была, есть и будет торговым сердцем Баткена.
+      <span data-i18n="quote">Кызыл-Кия была, есть и будет торговым сердцем Баткена.</span>
     </blockquote>
   </section>
 
@@ -318,30 +358,30 @@
   <section class="section" id="capsule">
     <div class="container">
       <header class="head reveal">
-        <span class="head__num">03</span>
-        <h2>Капсула времени</h2>
-        <p>В основание комплекса мы заложим обращение к тем, кто будет жить здесь через 35 лет.</p>
+        <span class="head__num">04</span>
+        <h2 data-i18n="capsule.title">Капсула времени</h2>
+        <p data-i18n="capsule.lead">В основание комплекса мы заложим обращение к тем, кто будет жить здесь через 35 лет.</p>
       </header>
 
       <div class="timeline reveal">
-        <div class="timeline__end"><b>2026</b><span>Закладка</span></div>
-        <div class="timeline__bar"><span class="timeline__fill"></span><em>35 лет</em></div>
-        <div class="timeline__end timeline__end--r"><b>2061</b><span>Вскрытие</span></div>
+        <div class="timeline__end"><b>2026</b><span data-i18n="tl.laid">Закладка</span></div>
+        <div class="timeline__bar"><span class="timeline__fill"></span><em data-i18n="tl.years">35 лет</em></div>
+        <div class="timeline__end timeline__end--r"><b>2061</b><span data-i18n="tl.open">Вскрытие</span></div>
       </div>
 
       <div class="capsule">
         <div class="capsule__msg reveal">
-          <p>«Когда вы читаете эти строки — наш комплекс уже давно служит людям. Мы не знаем, сколько лет прошло с этого дня. Но мы знаем одно: <b>мы строили это для вас</b>.</p>
-          <p>Берегите то, что мы создали. Приумножайте. Стройте ещё лучше.»</p>
+          <p data-i18n="capsule.msg1">«Когда вы читаете эти строки — наш комплекс уже давно служит людям. Мы не знаем, сколько лет прошло с этого дня. Но мы знаем одно: <b>мы строили это для вас</b>.</p>
+          <p data-i18n="capsule.msg2">Берегите то, что мы создали. Приумножайте. Стройте ещё лучше.»</p>
         </div>
         <ul class="capsule__items reveal">
-          <li>Обращение к потомкам</li>
-          <li>Копия Соглашения о ГЧП №44</li>
-          <li>Программа церемонии</li>
-          <li>Фотографии участников</li>
-          <li>Список гостей с подписями</li>
-          <li>Монета 1 сом и банкнота 100 сом 2026 года</li>
-          <li>Газета «Кыргыз Туусу» от 25.09.2026</li>
+          <li data-i18n="item1">Обращение к потомкам</li>
+          <li data-i18n="item2">Копия Соглашения о ГЧП №44</li>
+          <li data-i18n="item3">Программа церемонии</li>
+          <li data-i18n="item4">Фотографии участников</li>
+          <li data-i18n="item5">Список гостей с подписями</li>
+          <li data-i18n="item6">Монета 1 сом и банкнота 100 сом 2026 года</li>
+          <li data-i18n="item7">Газета «Кыргыз Туусу» от 25.09.2026</li>
         </ul>
       </div>
     </div>
@@ -351,24 +391,24 @@
   <section class="section section--alt" id="guests">
     <div class="container">
       <header class="head reveal">
-        <span class="head__num">04</span>
-        <h2>Почётные гости</h2>
-        <p>Те, кто вместе с нами заложит фундамент комплекса.</p>
+        <span class="head__num">05</span>
+        <h2 data-i18n="guests.title">Почётные гости</h2>
+        <p data-i18n="guests.lead">Те, кто вместе с нами заложит фундамент комплекса.</p>
       </header>
 
       <ul class="guests">
-        <li class="reveal"><span>01</span><div><strong>Касымалиев Адылбек Убакирович</strong><p>Председатель Кабинета Министров Кыргызской Республики</p></div></li>
-        <li class="reveal"><span>02</span><div><strong>Рахимов Мамыржан Тойчиевич</strong><p>Полномочный представитель Президента КР в Баткенской области</p></div></li>
-        <li class="reveal"><span>03</span><div><strong>Сабиров Равшан Азатович</strong><p>Руководитель Национального агентства по инвестициям при Президенте КР</p></div></li>
-        <li class="reveal"><span>04</span><div><strong>Кошалиев Бакытбек Сейтекович</strong><p>Мэр города Кызыл-Кия, государственный партнёр по Соглашению о ГЧП</p></div></li>
-        <li class="reveal"><span>05</span><div><strong>Шакиров Байстан Куттугалиевич</strong><p>Генеральный директор ОсОО «Алтын-Аска», инициатор и инвестор проекта</p></div></li>
-        <li class="reveal"><span>06</span><div><strong>Сатаров Кубанычбек Машрапович</strong><p>Директор ОсОО «Агро-Майдан», стратегический партнёр проекта</p></div></li>
+        <li class="reveal"><span>01</span><div><strong data-i18n="person.kasymaliev">Касымалиев Адылбек Убакирович</strong><p data-i18n="role.kasymaliev">Председатель Кабинета Министров Кыргызской Республики</p></div></li>
+        <li class="reveal"><span>02</span><div><strong data-i18n="person.rakhimov">Рахимов Мамыржан Тойчиевич</strong><p data-i18n="role.rakhimov">Полномочный представитель Президента КР в Баткенской области</p></div></li>
+        <li class="reveal"><span>03</span><div><strong data-i18n="person.sabirov">Сабиров Равшан Азатович</strong><p data-i18n="role.sabirov">Руководитель Национального агентства по инвестициям при Президенте КР</p></div></li>
+        <li class="reveal"><span>04</span><div><strong data-i18n="person.koshaliev">Кошалиев Бакытбек Сейтекович</strong><p data-i18n="role.koshaliev">Мэр города Кызыл-Кия, государственный партнёр по Соглашению о ГЧП</p></div></li>
+        <li class="reveal"><span>05</span><div><strong data-i18n="person.shakirov">Шакиров Байстан Куттугалиевич</strong><p data-i18n="role.shakirov">Генеральный директор ОсОО «Алтын-Аска», инициатор и инвестор проекта</p></div></li>
+        <li class="reveal"><span>06</span><div><strong data-i18n="person.satarov">Сатаров Кубанычбек Машрапович</strong><p data-i18n="role.satarov">Директор ОсОО «Агро-Майдан», стратегический партнёр проекта</p></div></li>
       </ul>
 
       <div class="chips reveal">
-        <span>Акимы Кадамжайского, Ноокатского, Баткенского и Аравано-Ноокатского районов</span>
-        <span>Аксакалы и старейшины Кызыл-Кии и Баткенской области</span>
-        <span>Предприниматели рынка Кызыл-Кии</span>
+        <span data-i18n="chip1">Акимы Кадамжайского, Ноокатского, Баткенского и Аравано-Ноокатского районов</span>
+        <span data-i18n="chip2">Аксакалы и старейшины Кызыл-Кии и Баткенской области</span>
+        <span data-i18n="chip3">Предприниматели рынка Кызыл-Кии</span>
       </div>
     </div>
   </section>
@@ -377,29 +417,29 @@
   <section class="section" id="place">
     <div class="container">
       <header class="head reveal">
-        <span class="head__num">05</span>
-        <h2>Место проведения</h2>
-        <p>г. Кызыл-Кия, Баткенская область, Кыргызская Республика</p>
+        <span class="head__num">06</span>
+        <h2 data-i18n="place.title">Место проведения</h2>
+        <p data-i18n="place.lead">г. Кызыл-Кия, Баткенская область, Кыргызская Республика</p>
       </header>
 
       <div class="place reveal">
         <div class="place__map">
-          <iframe title="Карта: Кызыл-Кия" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=%D0%9A%D1%8B%D0%B7%D1%8B%D0%BB-%D0%9A%D0%B8%D1%8F&amp;z=13&amp;output=embed"></iframe>
+          <iframe id="map" title="Карта: Кызыл-Кия" data-i18n-attr="title:place.mapTitle" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=%D0%9A%D1%8B%D0%B7%D1%8B%D0%BB-%D0%9A%D0%B8%D1%8F&amp;z=13&amp;hl=ru&amp;output=embed"></iframe>
         </div>
         <div class="place__side">
           <div>
-            <span class="info__label">Дата и время</span>
-            <strong>25 сентября 2026, <span data-time>10:00</span></strong>
+            <span class="info__label" data-i18n="place.dt">Дата и время</span>
+            <strong data-i18n="place.dtVal">25 сентября 2026, <span data-time>10:00</span></strong>
           </div>
           <div>
-            <span class="info__label">Адрес</span>
-            <strong>г. Кызыл-Кия, территория строительства ТЛК «Кызыл-Кия»</strong>
+            <span class="info__label" data-i18n="place.addr">Адрес</span>
+            <strong data-i18n="place.addrVal">г. Кызыл-Кия, территория строительства ТЛК «Кызыл-Кия»</strong>
           </div>
           <div class="place__btns">
-            <a class="btn btn--gold" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%9A%D1%8B%D0%B7%D1%8B%D0%BB-%D0%9A%D0%B8%D1%8F">Открыть в картах</a>
-            <button class="btn btn--ghost" type="button" data-ics>Добавить в календарь</button>
-            <button class="btn btn--ghost" type="button" id="shareBtn">Поделиться приглашением</button>
+            <a class="btn btn--gold" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%9A%D1%8B%D0%B7%D1%8B%D0%BB-%D0%9A%D0%B8%D1%8F" data-i18n="place.maps">Открыть в картах</a>
+            <button class="btn btn--ghost" type="button" data-ics data-i18n="place.cal">Добавить в календарь</button>
+            <button class="btn btn--ghost" type="button" id="shareBtn" data-i18n="place.share">Поделиться приглашением</button>
           </div>
         </div>
       </div>
@@ -409,14 +449,32 @@
 
 <footer class="footer">
   <svg class="footer__logo" aria-hidden="true"><use href="#logo"/></svg>
-  <p class="footer__brand">Алтын-Аска</p>
-  <p class="footer__tag">Люди · Товары · Возможности · Развитие</p>
-  <p class="footer__meta">ОсОО «Алтын-Аска» · г. Кызыл-Кия, Баткенская область · 2026</p>
-  <button class="footer__replay" type="button" id="replay">✉ Открыть конверт ещё раз</button>
+  <p class="footer__brand" data-i18n="brand">Алтын-Аска</p>
+  <p class="footer__tag" data-i18n="tagline">Люди · Товары · Возможности · Развитие</p>
+  <p class="footer__meta" data-i18n="footer.meta">ОсОО «Алтын-Аска» · г. Кызыл-Кия, Баткенская область · 2026</p>
+  <button class="footer__replay" type="button" id="replay" data-i18n="footer.replay">✉ Открыть конверт ещё раз</button>
 </footer>
+
+<!-- Просмотр изображения -->
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Облик комплекса" data-i18n-attr="aria-label:gallery.title">
+  <button class="lb__btn lb__close" id="lbClose" type="button" aria-label="Закрыть" data-i18n-attr="aria-label:gallery.close">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button class="lb__btn lb__prev" id="lbPrev" type="button" aria-label="Предыдущее" data-i18n-attr="aria-label:gallery.prev">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+  </button>
+  <figure class="lb__fig">
+    <img id="lbImg" alt="">
+    <figcaption class="lb__cap" id="lbCap"></figcaption>
+  </figure>
+  <button class="lb__btn lb__next" id="lbNext" type="button" aria-label="Следующее" data-i18n-attr="aria-label:gallery.next">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+</div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
