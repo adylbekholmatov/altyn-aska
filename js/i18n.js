@@ -44,7 +44,7 @@ window.I18N = {
     'intro.stamp': 'Кыргызстан',
     'intro.postmark': 'КЫЗЫЛ-КЫЯ · БАТКЕН · КЫРГЫЗСТАН ·',
     'intro.open': 'Чакырууну ачуу',
-    'intro.hint': 'Ачуу үчүн мөөрдү басыңыз',
+    'intro.hint': 'же конвертти басыңыз',
     'intro.skip': 'Өткөрүп жиберүү →',
 
     'brand': 'Алтын-Аска',
@@ -227,7 +227,7 @@ window.I18N = {
     'intro.stamp': 'Kyrgyzstan',
     'intro.postmark': 'KYZYL-KIYA · BATKEN · KYRGYZSTAN ·',
     'intro.open': 'Open the invitation',
-    'intro.hint': 'Tap the seal to open',
+    'intro.hint': 'or tap the envelope',
     'intro.skip': 'Skip →',
 
     'brand': 'Altyn-Aska',

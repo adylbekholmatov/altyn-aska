@@ -160,8 +160,17 @@
     setTimeout(() => { intro.hidden = true; }, reduceMotion ? 0 : 950);
   }
 
-  seal.addEventListener('click', openEnvelope);
-  $('#envelope').addEventListener('click', openEnvelope);
+  // Открыть можно касанием в любом месте экрана — кроме языков и «Пропустить»
+  const isIntroControl = (target) => target.closest('.lang, .intro__skip');
+  intro.addEventListener('click', (e) => {
+    if (!isIntroControl(e.target)) openEnvelope();
+  });
+  // Некоторые встроенные браузеры (Telegram, WhatsApp, Instagram) теряют click — дублируем касанием
+  intro.addEventListener('touchend', (e) => {
+    if (isIntroControl(e.target)) return;
+    e.preventDefault();
+    openEnvelope();
+  }, { passive: false });
   $('#introSkip').addEventListener('click', finishIntro);
   document.addEventListener('keydown', (e) => {
     if (intro.hidden) return;

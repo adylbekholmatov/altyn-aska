@@ -44,8 +44,8 @@
     <path d="M60 3 C70 3 74 9 83 10 C93 12 99 9 105 17 C111 25 108 31 112 39 C117 48 118 53 116 62 C114 72 118 77 113 86 C107 95 101 95 95 102 C88 110 83 115 72 115 C62 116 57 119 47 116 C37 113 33 108 25 103 C16 97 11 94 7 84 C3 74 6 68 4 58 C2 48 3 43 8 34 C13 25 17 22 25 15 C34 8 40 9 48 5 C53 3 56 3 60 3 Z" fill="url(#waxGold)"/>
     <circle cx="60" cy="60" r="41" fill="none" stroke="#8a5d17" stroke-opacity=".55" stroke-width="2.5"/>
     <circle cx="59.2" cy="59.2" r="41" fill="none" stroke="#ffe3a0" stroke-opacity=".35" stroke-width="1"/>
-    <use href="#logo" x="33" y="38" width="54" height="44" style="--logo-tip:#7d5412;--logo-body:#86591a" opacity=".6" transform="translate(.9 1)"/>
-    <use href="#logo" x="33" y="38" width="54" height="44" style="--logo-tip:#fff0c4;--logo-body:#f3cd78"/>
+    <use href="#logo" xlink:href="#logo" x="33" y="38" width="54" height="44" style="--logo-tip:#7d5412;--logo-body:#86591a" opacity=".6" transform="translate(.9 1)"/>
+    <use href="#logo" xlink:href="#logo" x="33" y="38" width="54" height="44" style="--logo-tip:#fff0c4;--logo-body:#f3cd78"/>
   </symbol>
 </svg>
 
@@ -72,7 +72,7 @@
       <div class="envelope__back"></div>
 
       <div class="letter" aria-hidden="true">
-        <svg class="letter__logo"><use href="#logo"/></svg>
+        <svg class="letter__logo" viewBox="0 0 200 162"><use href="#logo" xlink:href="#logo"/></svg>
         <span class="letter__kicker" data-i18n="intro.kicker">Приглашение</span>
         <span class="letter__date">25 · 09 · 2026</span>
         <span class="letter__place" data-i18n="city.short">Кызыл-Кия</span>
@@ -88,7 +88,7 @@
 
       <div class="postage" aria-hidden="true">
         <div class="postage__inner">
-          <svg class="postage__logo"><use href="#logo"/></svg>
+          <svg class="postage__logo" viewBox="0 0 200 162"><use href="#logo" xlink:href="#logo"/></svg>
           <span class="postage__txt" data-i18n="intro.stamp">Кыргызстан</span>
           <span class="postage__val">2026</span>
         </div>
@@ -96,7 +96,7 @@
       <svg class="postmark" viewBox="0 0 120 120" aria-hidden="true">
         <defs><path id="pmCircle" d="M16 60 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
         <circle cx="60" cy="60" r="54"/><circle cx="60" cy="60" r="33"/>
-        <text class="pm-ring"><textPath href="#pmCircle" data-i18n="intro.postmark">КЫЗЫЛ-КИЯ · БАТКЕН · КЫРГЫЗСТАН ·</textPath></text>
+        <text class="pm-ring"><textPath href="#pmCircle" xlink:href="#pmCircle" data-i18n="intro.postmark">КЫЗЫЛ-КИЯ · БАТКЕН · КЫРГЫЗСТАН ·</textPath></text>
         <text x="60" y="58" text-anchor="middle" class="pm-d">25.09</text>
         <text x="60" y="74" text-anchor="middle" class="pm-y">2026</text>
         <path class="pm-wave" d="M118 44 q9 -6 18 0 t18 0 t18 0 M118 60 q9 -6 18 0 t18 0 t18 0 M118 76 q9 -6 18 0 t18 0 t18 0"/>
@@ -105,13 +105,14 @@
       <div class="envelope__flap" aria-hidden="true"><span class="flap"></span></div>
 
       <button class="seal" id="seal" type="button" aria-label="Открыть приглашение" data-i18n-attr="aria-label:intro.open">
-        <span class="seal__half seal__half--l"><svg viewBox="0 0 120 120"><use href="#waxShape"/></svg></span>
-        <span class="seal__half seal__half--r"><svg viewBox="0 0 120 120"><use href="#waxShape"/></svg></span>
+        <span class="seal__half seal__half--l"><svg viewBox="0 0 120 120"><use href="#waxShape" xlink:href="#waxShape"/></svg></span>
+        <span class="seal__half seal__half--r"><svg viewBox="0 0 120 120"><use href="#waxShape" xlink:href="#waxShape"/></svg></span>
         <span class="seal__pulse"></span>
       </button>
     </div>
 
-    <p class="intro__hint" data-i18n="intro.hint">Нажмите на печать, чтобы открыть</p>
+    <button class="btn btn--gold intro__open" id="introOpen" type="button" data-i18n="intro.open">Открыть приглашение</button>
+    <p class="intro__hint" data-i18n="intro.hint">или нажмите на конверт</p>
   </div>
 
   <button class="intro__skip" id="introSkip" type="button" data-i18n="intro.skip">Пропустить →</button>
@@ -120,7 +121,7 @@
 <!-- ===================== САЙТ ===================== -->
 <header class="nav" id="nav">
   <a class="nav__brand" href="#top" aria-label="Алтын-Аска" data-i18n-attr="aria-label:brand">
-    <svg class="nav__logo"><use href="#logo"/></svg>
+    <svg class="nav__logo" viewBox="0 0 200 162"><use href="#logo" xlink:href="#logo"/></svg>
     <span data-i18n="brand">Алтын-Аска</span>
   </a>
   <nav class="nav__links" aria-label="Разделы" data-i18n-attr="aria-label:nav.aria">
@@ -165,7 +166,7 @@
     </div>
 
     <div class="hero__content">
-      <svg class="hero__logo" role="img" aria-label="Логотип Алтын-Аска" data-i18n-attr="aria-label:logo.aria"><use href="#logo"/></svg>
+      <svg class="hero__logo" viewBox="0 0 200 162" role="img" aria-label="Логотип Алтын-Аска" data-i18n-attr="aria-label:logo.aria"><use href="#logo" xlink:href="#logo"/></svg>
       <p class="hero__brand" data-i18n="brand">Алтын-Аска</p>
       <p class="hero__sub" data-i18n="hero.sub">Торгово-транспортно-логистический комплекс <span>«Кызыл-Кия»</span></p>
 
@@ -199,7 +200,7 @@
   <!-- ПИСЬМО -->
   <section class="section section--paper" id="letter">
     <article class="paper reveal">
-      <svg class="paper__logo" aria-hidden="true"><use href="#logo"/></svg>
+      <svg class="paper__logo" viewBox="0 0 200 162" aria-hidden="true"><use href="#logo" xlink:href="#logo"/></svg>
       <p class="paper__greet" data-i18n="letter.greet">Уважаемые гости!</p>
       <p data-i18n="letter.p1">ОсОО <b>«Алтын-Аска»</b> и <b>Мэрия города Кызыл-Кия</b> сердечно приглашают Вас на торжественную церемонию закладки первого камня Торгово-транспортно-логистического комплекса «Кызыл-Кия» — нового экономического сердца юга Кыргызстана.</p>
       <p data-i18n="letter.p2">В этот день мы также заложим <b>капсулу времени</b> с обращением к потомкам, которую откроют через 35 лет — в 2061 году.</p>
@@ -448,7 +449,7 @@
 </main>
 
 <footer class="footer">
-  <svg class="footer__logo" aria-hidden="true"><use href="#logo"/></svg>
+  <svg class="footer__logo" viewBox="0 0 200 162" aria-hidden="true"><use href="#logo" xlink:href="#logo"/></svg>
   <p class="footer__brand" data-i18n="brand">Алтын-Аска</p>
   <p class="footer__tag" data-i18n="tagline">Люди · Товары · Возможности · Развитие</p>
   <p class="footer__meta" data-i18n="footer.meta">ОсОО «Алтын-Аска» · г. Кызыл-Кия, Баткенская область · 2026</p>
