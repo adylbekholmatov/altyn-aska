@@ -29,92 +29,46 @@
   const pad = (n) => String(n).padStart(2, '0');
 
   /* ==========================================================
-     ЯЗЫКИ · ТИЛДЕР · LANGUAGES
+     СКРИПТТЕГИ ТЕКСТТЕР (сайт кыргыз тилинде)
      ========================================================== */
-  const I18N = window.I18N || { ru: {}, ky: {}, en: {} };
-  const LANGS = ['ru', 'ky', 'en'];
-  const LOCALES = { ru: 'ru-RU', ky: 'ky-KG', en: 'en-US' };
-  const metaDesc = $('meta[name="description"]');
-  let lang = 'ru';
-
-  // Русский текст берём прямо из разметки
-  const textNodes = $$('[data-i18n]');
-  textNodes.forEach((el) => {
-    const k = el.dataset.i18n;
-    if (I18N.ru[k] == null) I18N.ru[k] = el.innerHTML.trim();
-  });
-  const attrNodes = $$('[data-i18n-attr]').map((el) => ({
-    el,
-    pairs: el.dataset.i18nAttr.split(';').map((p) => p.split(':').map((s) => s.trim())),
-  }));
-  attrNodes.forEach(({ el, pairs }) => pairs.forEach(([attr, k]) => {
-    if (I18N.ru[k] == null) I18N.ru[k] = el.getAttribute(attr) || '';
-  }));
-  I18N.ru['meta.title'] = document.title;
-  I18N.ru['meta.desc'] = metaDesc.getAttribute('content');
-
-  const t = (k) => {
-    const dict = I18N[lang];
-    if (dict && dict[k] != null) return dict[k];
-    return I18N.ru[k] != null ? I18N.ru[k] : k;
+  const TEXT = {
+    'js.done': 'Салтанат өттү · 2026-жылдын 25-сентябры',
+    'js.icsToast': 'Иш-чара сакталды — календарга кошуу үчүн файлды ачыңыз',
+    'js.copied': 'Чакыруунун шилтемеси көчүрүлдү',
+    'js.shareTitle': 'Чакыруу · «Кызыл-Кыя» комплекси',
+    'js.shareText': '«Кызыл-Кыя» комплексинин биринчи ташын коюу аземине чакырабыз — 2026-жылдын 25-сентябры',
+    'js.icsTitle': '«Кызыл-Кыя» комплексинин биринчи ташын коюу аземи',
+    'js.icsLoc': 'Кызыл-Кыя шаары, Баткен облусу, Кыргызстан',
+    'js.icsDesc': 'Биринчи ташты жана убакыт капсуласын коюунун салтанаттуу аземи. «Алтын-Аска» ЖЧК, Кызыл-Кыя шаарынын мэриясы.',
+    'js.icsAlarm': 'Эртең Кызыл-Кыяда салтанат',
+    'music.on': 'Музыканы күйгүзүү',
+    'music.off': 'Музыканы өчүрүү',
+    'music.error': 'Музыканы жүктөө мүмкүн болбоду',
+    'gallery.open': 'Чоң ачуу',
+    'gal.1.t': 'Комплекстин жалпы көрүнүшү',
+    'gal.1.d': 'Бийиктиктен көрүнүш: соода борбору, административдик блок жана жүк терминалы',
+    'gal.2.t': 'Административдик жана тейлөө блоктору',
+    'gal.2.d': 'Башкы кире бериштеги кеңселер, банктар жана тейлөө аймактары',
+    'gal.3.t': 'Комплекстин башкы огу',
+    'gal.3.d': 'Жабык павильондор, соода короосу жана административдик борбор',
+    'gal.4.t': 'Башкы план бийиктиктен',
+    'gal.4.d': '13 гектар: соода аймактары, унаа токтотуучу жайлар жана кире бериш жолдор',
+    'gal.5.t': 'Административдик блоктун фасады',
+    'gal.5.d': 'Башкы кире бериш, салтанаттуу тепкич жана коноктор үчүн унаа токтотуучу жай',
+    'gal.6.t': 'Жабык соода борбору',
+    'gal.6.d': 'Айнек чатырлуу тегерек павильондор жана жарык күмбөзү',
+    'gal.7.t': 'Комплекстин панорамасы',
+    'gal.7.d': 'Жашыл аймак менен курчалган комплекс',
+    'gal.8.t': 'Унаа токтотуучу жай жана жүк терминалы',
+    'gal.8.d': '1 250 унаа орду жана 80 TIR жүк ташуучу унаа үчүн токтотуучу жай',
   };
-  const fmt = () => new Intl.NumberFormat(LOCALES[lang]);
+  const t = (k) => (TEXT[k] != null ? TEXT[k] : k);
+  const fmt = () => new Intl.NumberFormat('ru-RU');
   const langListeners = [];
 
   function fillTime() {
     $$('[data-time]').forEach((el) => { el.textContent = EVENT.time; });
   }
-
-  function applyLang(next) {
-    lang = LANGS.includes(next) ? next : 'ru';
-    document.documentElement.lang = lang;
-    textNodes.forEach((el) => {
-      const v = t(el.dataset.i18n);
-      if (el.innerHTML !== v) el.innerHTML = v;
-    });
-    attrNodes.forEach(({ el, pairs }) => pairs.forEach(([attr, k]) => el.setAttribute(attr, t(k))));
-    document.title = t('meta.title');
-    metaDesc.setAttribute('content', t('meta.desc'));
-    fillTime();
-    $$('[data-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-    langListeners.forEach((fn) => fn());
-  }
-
-  function setLang(next) {
-    if (next === lang) return;
-    try { localStorage.setItem('lang', next); } catch (_) { /* хранилище недоступно */ }
-    try {
-      const u = new URL(location.href);
-      u.searchParams.set('lang', next);
-      history.replaceState(null, '', u);
-    } catch (_) { /* file:// и т.п. */ }
-
-    if (reduceMotion) { applyLang(next); return; }
-    const root = document.documentElement;
-    root.classList.add('lang-fade');
-    setTimeout(() => {
-      applyLang(next);
-      root.classList.remove('lang-fade');
-    }, 220);
-  }
-
-  function detectLang() {
-    const fromUrl = new URLSearchParams(location.search).get('lang');
-    if (LANGS.includes(fromUrl)) return fromUrl;
-    try {
-      const stored = localStorage.getItem('lang');
-      if (LANGS.includes(stored)) return stored;
-    } catch (_) { /* хранилище недоступно */ }
-    const nav = ((navigator.languages && navigator.languages[0]) || navigator.language || 'ru').toLowerCase();
-    if (nav.startsWith('ky')) return 'ky';
-    if (nav.startsWith('en')) return 'en';
-    return 'ru';
-  }
-
-  $$('[data-lang]').forEach((b) => b.addEventListener('click', (e) => {
-    e.stopPropagation();
-    setLang(b.dataset.lang);
-  }));
 
   /* ---------- Звёзды ---------- */
   $$('[data-stars]').forEach((box) => {
@@ -160,8 +114,8 @@
     setTimeout(() => { intro.hidden = true; }, reduceMotion ? 0 : 950);
   }
 
-  // Открыть можно касанием в любом месте экрана — кроме языков и «Пропустить»
-  const isIntroControl = (target) => target.closest('.lang, .intro__skip');
+  // Открыть можно касанием в любом месте экрана — кроме «Пропустить»
+  const isIntroControl = (target) => target.closest('.intro__skip');
   intro.addEventListener('click', (e) => {
     if (!isIntroControl(e.target)) openEnvelope();
   });
@@ -304,14 +258,11 @@
     }
   });
 
-  /* ---------- Карта на языке страницы ---------- */
+  /* ---------- Карта кыргыз тилинде ---------- */
   const map = $('#map');
   langListeners.push(() => {
-    const src = `https://www.google.com/maps?q=${encodeURIComponent('Кызыл-Кия')}&z=13&hl=${lang}&output=embed`;
-    if (map.dataset.hl !== lang) {
-      map.dataset.hl = lang;
-      map.src = src;
-    }
+    const src = `https://www.google.com/maps?q=${encodeURIComponent('Кызыл-Кия')}&z=13&hl=ky&output=embed`;
+    if (map.src !== src) map.src = src;
   });
 
   /* ==========================================================
@@ -567,9 +518,93 @@
   }, { passive: true });
   window.addEventListener('resize', () => { layout(); onScroll(); });
 
+  /* ==========================================================
+     ФОНДОГУ МУЗЫКА (YouTube)
+     ========================================================== */
+  const YT_ID = '3pxvx3_9JZk';
+  const musicBtn = $('#music');
+  let ytPlayer = null;
+  let ytReady = false;
+  let wantPlay = false;
+  let playing = false;
+  let startCheck;
+
+  function setMusicUi(on) {
+    playing = on;
+    musicBtn.classList.toggle('is-playing', on);
+    musicBtn.setAttribute('aria-pressed', String(on));
+    musicBtn.setAttribute('aria-label', t(on ? 'music.off' : 'music.on'));
+  }
+
+  function musicFailed() {
+    wantPlay = false;
+    setMusicUi(false);
+    toast(t('music.error'));
+  }
+
+  function createPlayer() {
+    ytPlayer = new window.YT.Player('ytPlayer', {
+      width: 200,
+      height: 200,
+      videoId: YT_ID,
+      playerVars: { autoplay: 0, controls: 0, disablekb: 1, fs: 0, loop: 1, playlist: YT_ID, playsinline: 1, rel: 0 },
+      events: {
+        onReady: () => {
+          ytReady = true;
+          ytPlayer.setVolume(70);
+          if (wantPlay) ytPlayer.playVideo();
+        },
+        onStateChange: (e) => {
+          const S = window.YT.PlayerState;
+          if (e.data === S.PLAYING) {
+            // Колдонуучу жүктөлүп жатканда өчүрүп койгон болсо — ойнотпойбуз
+            if (!wantPlay) { ytPlayer.pauseVideo(); return; }
+            clearTimeout(startCheck);
+            setMusicUi(true);
+          } else if (e.data === S.PAUSED && !wantPlay) setMusicUi(false);
+          else if (e.data === S.ENDED) ytPlayer.playVideo();
+        },
+        onError: musicFailed,
+      },
+    });
+  }
+
+  // Плеер жүктөлүп турат — баскычты басканда музыка дароо башталат (iPhone үчүн маанилүү)
+  if (window.YT && window.YT.Player) createPlayer();
+  else {
+    window.onYouTubeIframeAPIReady = createPlayer;
+    const s = document.createElement('script');
+    s.src = 'https://www.youtube.com/iframe_api';
+    s.async = true;
+    s.onerror = () => { musicBtn.dataset.failed = '1'; };
+    document.head.appendChild(s);
+  }
+
+  musicBtn.addEventListener('click', () => {
+    if (musicBtn.dataset.failed) { musicFailed(); return; }
+    if (playing || wantPlay) {
+      wantPlay = false;
+      clearTimeout(startCheck);
+      if (ytReady) ytPlayer.pauseVideo();
+      setMusicUi(false);
+      return;
+    }
+    wantPlay = true;
+    setMusicUi(true);
+    if (ytReady) ytPlayer.playVideo();
+    // Браузер ойнотууга жол бербесе — баскычты мурунку абалына кайтаруу
+    clearTimeout(startCheck);
+    startCheck = setTimeout(() => {
+      const st = ytReady ? ytPlayer.getPlayerState() : -1;
+      if (wantPlay && st !== 1 && st !== 3) musicFailed();
+    }, 6000);
+  });
+  musicBtn.setAttribute('aria-label', t('music.on'));
+
   /* ---------- Старт ---------- */
   layout();
-  applyLang(detectLang());
+  fillTime();
+  langListeners.forEach((fn) => fn());
   if (tick()) {
     const iv = setInterval(() => { if (!tick()) clearInterval(iv); }, 1000);
   }
