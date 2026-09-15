@@ -261,7 +261,7 @@
   /* ---------- Карта кыргыз тилинде ---------- */
   const map = $('#map');
   langListeners.push(() => {
-    const src = `https://www.google.com/maps?q=${encodeURIComponent('Кызыл-Кия')}&z=13&hl=ky&output=embed`;
+    const src = 'https://www.google.com/maps?q=40.270648,72.145889&z=16&hl=ky&output=embed'; // салтанат өтүүчү так жер
     if (map.src !== src) map.src = src;
   });
 
@@ -521,7 +521,7 @@
   /* ==========================================================
      ФОНДОГУ МУЗЫКА (YouTube)
      ========================================================== */
-  const YT_ID = '3pxvx3_9JZk';
+  const YT_ID = 'iw7F1FRFn5o'; // Ulukmanapo & 7Gen — Kyrgyz
   const musicBtn = $('#music');
   let ytPlayer = null;
   let ytReady = false;
