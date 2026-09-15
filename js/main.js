@@ -521,7 +521,7 @@
   /* ==========================================================
      ФОНДОГУ МУЗЫКА (YouTube)
      ========================================================== */
-  const YT_ID = 'iw7F1FRFn5o'; // Ulukmanapo & 7Gen — Kyrgyz
+  const YT_ID = 'kDXbJxWyu6Q'; // Омар Жанышов — «Кыргызстаным»
   const musicBtn = $('#music');
   let ytPlayer = null;
   let ytReady = false;
