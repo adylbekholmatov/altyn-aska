@@ -44,7 +44,7 @@
     'music.on': 'Музыканы күйгүзүү',
     'music.off': 'Музыканы өчүрүү',
     'music.error': 'Музыканы жүктөө мүмкүн болбоду',
-    'music.tap': 'Ойнотуу үчүн плеердеги ▶ баскычын басыңыз',
+    'music.tap': 'Ойнотуу үчүн ▶ баскычын басыңыз',
     'gallery.open': 'Чоң ачуу',
     'gal.1.t': 'Комплекстин жалпы көрүнүшү',
     'gal.1.d': 'Бийиктиктен көрүнүш: соода борбору, административдик блок жана жүк терминалы',
@@ -546,10 +546,10 @@
 
   function createPlayer() {
     ytPlayer = new window.YT.Player('ytPlayer', {
-      width: '100%',
-      height: '100%',
+      width: 260,
+      height: 146,
       videoId: YT_ID,
-      playerVars: { autoplay: 0, controls: 1, fs: 0, loop: 1, playlist: YT_ID, playsinline: 1, rel: 0 },
+      playerVars: { autoplay: 0, controls: 0, disablekb: 1, fs: 0, loop: 1, playlist: YT_ID, playsinline: 1, rel: 0 },
       events: {
         onReady: () => {
           ytReady = true;
@@ -562,6 +562,7 @@
             // Колдонуучу жүктөлүп жатканда өчүрүп койгон болсо — ойнотпойбуз
             if (!wantPlay) { ytPlayer.pauseVideo(); return; }
             clearTimeout(startCheck);
+            musicCard.classList.remove('is-open');
             setMusicUi(true);
           } else if (e.data === S.PAUSED) {
             // Колдонуучу плеердин өзүнөн токтотушу мүмкүн
@@ -598,19 +599,16 @@
     }
     wantPlay = true;
     setMusicUi(true);
-    // Плеерди көрсөтөбүз: iPhone'до үн плеердин өзүн басканда гана күйөт
-    musicCard.classList.add('is-open');
     if (ytReady) ytPlayer.playVideo();
-    // Браузер өзү ойнотпосо — колдонуучуга плеерди басууну сунуштайбыз
+    // Браузер ойнотууга жол бербесе — баскычты мурунку абалына кайтарабыз
     clearTimeout(startCheck);
     startCheck = setTimeout(() => {
       const st = ytReady ? ytPlayer.getPlayerState() : -1;
-      if (wantPlay && st !== 1 && st !== 3) {
-        wantPlay = false;
-        setMusicUi(false);
-        toast(t('music.tap'));
-      }
-    }, 2500);
+      if (!wantPlay || st === 1 || st === 3) return;
+      // iPhone'до баракчадан берилген буйрук жетишсиз — плеерди көрсөтөбүз
+      musicCard.classList.add('is-open');
+      toast(t('music.tap'));
+    }, 2000);
   });
   musicBtn.setAttribute('aria-label', t('music.on'));
 

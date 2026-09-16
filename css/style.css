@@ -808,6 +808,7 @@ body.is-open .hero__content > :nth-child(7) { transition-delay: 1.06s; }
   border: 1px solid rgba(243, 207, 122, .6); border-radius: 50%;
   animation: pulse 2.2s ease-out infinite; pointer-events: none;
 }
+/* Плеер көрүнбөйт; браузер үндү өзү коё албаган учурда гана ачылат */
 .music__player {
   position: fixed; left: 16px; bottom: calc(max(16px, env(safe-area-inset-bottom)) + 58px); z-index: 129;
   width: min(260px, 72vw); aspect-ratio: 16 / 9;
