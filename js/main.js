@@ -44,6 +44,7 @@
     'music.on': 'Музыканы күйгүзүү',
     'music.off': 'Музыканы өчүрүү',
     'music.error': 'Музыканы жүктөө мүмкүн болбоду',
+    'music.tap': 'Ойнотуу үчүн плеердеги ▶ баскычын басыңыз',
     'gallery.open': 'Чоң ачуу',
     'gal.1.t': 'Комплекстин жалпы көрүнүшү',
     'gal.1.d': 'Бийиктиктен көрүнүш: соода борбору, административдик блок жана жүк терминалы',
@@ -523,6 +524,7 @@
      ========================================================== */
   const YT_ID = 'kDXbJxWyu6Q'; // Омар Жанышов — «Кыргызстаным»
   const musicBtn = $('#music');
+  const musicCard = $('#musicPlayer');
   let ytPlayer = null;
   let ytReady = false;
   let wantPlay = false;
@@ -544,10 +546,10 @@
 
   function createPlayer() {
     ytPlayer = new window.YT.Player('ytPlayer', {
-      width: 200,
-      height: 200,
+      width: '100%',
+      height: '100%',
       videoId: YT_ID,
-      playerVars: { autoplay: 0, controls: 0, disablekb: 1, fs: 0, loop: 1, playlist: YT_ID, playsinline: 1, rel: 0 },
+      playerVars: { autoplay: 0, controls: 1, fs: 0, loop: 1, playlist: YT_ID, playsinline: 1, rel: 0 },
       events: {
         onReady: () => {
           ytReady = true;
@@ -561,7 +563,11 @@
             if (!wantPlay) { ytPlayer.pauseVideo(); return; }
             clearTimeout(startCheck);
             setMusicUi(true);
-          } else if (e.data === S.PAUSED && !wantPlay) setMusicUi(false);
+          } else if (e.data === S.PAUSED) {
+            // Колдонуучу плеердин өзүнөн токтотушу мүмкүн
+            wantPlay = false;
+            setMusicUi(false);
+          }
           else if (e.data === S.ENDED) ytPlayer.playVideo();
         },
         onError: musicFailed,
@@ -586,18 +592,25 @@
       wantPlay = false;
       clearTimeout(startCheck);
       if (ytReady) ytPlayer.pauseVideo();
+      musicCard.classList.remove('is-open');
       setMusicUi(false);
       return;
     }
     wantPlay = true;
     setMusicUi(true);
+    // Плеерди көрсөтөбүз: iPhone'до үн плеердин өзүн басканда гана күйөт
+    musicCard.classList.add('is-open');
     if (ytReady) ytPlayer.playVideo();
-    // Браузер ойнотууга жол бербесе — баскычты мурунку абалына кайтаруу
+    // Браузер өзү ойнотпосо — колдонуучуга плеерди басууну сунуштайбыз
     clearTimeout(startCheck);
     startCheck = setTimeout(() => {
       const st = ytReady ? ytPlayer.getPlayerState() : -1;
-      if (wantPlay && st !== 1 && st !== 3) musicFailed();
-    }, 6000);
+      if (wantPlay && st !== 1 && st !== 3) {
+        wantPlay = false;
+        setMusicUi(false);
+        toast(t('music.tap'));
+      }
+    }, 2500);
   });
   musicBtn.setAttribute('aria-label', t('music.on'));
 
