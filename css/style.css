@@ -808,19 +808,7 @@ body.is-open .hero__content > :nth-child(7) { transition-delay: 1.06s; }
   border: 1px solid rgba(243, 207, 122, .6); border-radius: 50%;
   animation: pulse 2.2s ease-out infinite; pointer-events: none;
 }
-/* Плеер көрүнбөйт; браузер үндү өзү коё албаган учурда гана ачылат */
-.music__player {
-  position: fixed; left: 16px; bottom: calc(max(16px, env(safe-area-inset-bottom)) + 58px); z-index: 129;
-  width: min(260px, 72vw); aspect-ratio: 16 / 9;
-  border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
-  background: #000;
-  box-shadow: 0 20px 40px -18px rgba(0, 0, 0, .9);
-  opacity: 0; transform: translateY(14px) scale(.96); pointer-events: none;
-  transition: opacity .35s var(--ease), transform .35s var(--ease);
-}
-.music__player.is-open { opacity: 1; transform: none; pointer-events: auto; }
-.music__player iframe, .music__player > div { display: block; width: 100%; height: 100%; border: 0; }
-@supports not (aspect-ratio: 1 / 1) { .music__player { height: 146px; } }
+.music__player { position: fixed; left: 0; bottom: 0; z-index: -1; width: 200px; height: 200px; opacity: 0; pointer-events: none; }
 @media (max-width: 560px) {
   .music { padding: 0 5px; }
   .music__label { display: none; }

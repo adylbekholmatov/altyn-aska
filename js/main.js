@@ -44,7 +44,6 @@
     'music.on': 'Музыканы күйгүзүү',
     'music.off': 'Музыканы өчүрүү',
     'music.error': 'Музыканы жүктөө мүмкүн болбоду',
-    'music.tap': 'Ойнотуу үчүн ▶ баскычын басыңыз',
     'gallery.open': 'Чоң ачуу',
     'gal.1.t': 'Комплекстин жалпы көрүнүшү',
     'gal.1.d': 'Бийиктиктен көрүнүш: соода борбору, административдик блок жана жүк терминалы',
@@ -524,7 +523,6 @@
      ========================================================== */
   const YT_ID = 'kDXbJxWyu6Q'; // Омар Жанышов — «Кыргызстаным»
   const musicBtn = $('#music');
-  const musicCard = $('#musicPlayer');
   let ytPlayer = null;
   let ytReady = false;
   let wantPlay = false;
@@ -562,7 +560,6 @@
             // Колдонуучу жүктөлүп жатканда өчүрүп койгон болсо — ойнотпойбуз
             if (!wantPlay) { ytPlayer.pauseVideo(); return; }
             clearTimeout(startCheck);
-            musicCard.classList.remove('is-open');
             setMusicUi(true);
           } else if (e.data === S.PAUSED) {
             // Колдонуучу плеердин өзүнөн токтотушу мүмкүн
@@ -593,7 +590,6 @@
       wantPlay = false;
       clearTimeout(startCheck);
       if (ytReady) ytPlayer.pauseVideo();
-      musicCard.classList.remove('is-open');
       setMusicUi(false);
       return;
     }
@@ -604,11 +600,8 @@
     clearTimeout(startCheck);
     startCheck = setTimeout(() => {
       const st = ytReady ? ytPlayer.getPlayerState() : -1;
-      if (!wantPlay || st === 1 || st === 3) return;
-      // iPhone'до баракчадан берилген буйрук жетишсиз — плеерди көрсөтөбүз
-      musicCard.classList.add('is-open');
-      toast(t('music.tap'));
-    }, 2000);
+      if (wantPlay && st !== 1 && st !== 3) musicFailed();
+    }, 2500);
   });
   musicBtn.setAttribute('aria-label', t('music.on'));
 
