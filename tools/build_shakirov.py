@@ -1,10 +1,7 @@
-"""Шакиров Б. К. кол койгон версияны түзөт.
+"""Шакиров Б. К. версиясынын өзүнчө сайтын (shakirov-site/) жаңыртат.
 
-Эки нерсе жаралат:
-  * shakirov.html          — негизги сайттагы кошумча барак
-  * shakirov-site/         — өзүнчө Vercel долбоору үчүн толук көчүрмө
-
-index.html же css/js/assets өзгөргөндөн кийин ушуну иштетиңиз:
+Шакировдун версиясы `shakirov.html` файлында — аны кол менен түзөтсөңүз болот.
+Ушул скрипт аны жана жалпы css/js/assets папкаларын shakirov-site/ ичине көчүрөт:
 
     python tools/build_shakirov.py
 """
@@ -12,37 +9,26 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SOURCE = ROOT / 'index.html'
 PAGE = ROOT / 'shakirov.html'
 SITE = ROOT / 'shakirov-site'
 COPY = ('css', 'js', 'assets')
-
-SIGN_FROM = ('<strong>Сатаров Кубанычбек Машрапович</strong>\n'
-             '        <em>«Агро-Майдан» ЖЧКнын директору</em>')
-SIGN_TO = ('<strong>Шакиров Байстан Куттугалиевич</strong>\n'
-           '        <em>«Алтын-Аска» ЖЧКнын башкы директору</em>')
-
-NOTE = ('<!doctype html>\n'
-        '<!-- Бул файл кол менен түзөтүлбөйт: python tools/build_shakirov.py -->\n')
+OLD_NOTE = '<!-- Бул файл кол менен түзөтүлбөйт: python tools/build_shakirov.py -->\n'
 
 README = '''# Алтын-Аска · Чакыруу (Шакиров Б. К.)
 
-«Кызыл-Кыя» комплексинин биринчи ташын коюу аземине чакыруу —
-каты **Шакиров Байстан Куттугалиевичтин** атынан.
+«Кызыл-Кыя» комплексинин биринчи ташын коюу аземине чакыруунун Шакиров Б. К.
+версиясы. Бул папка кол менен түзөтүлбөйт: тексттерди негизги репозиторийдеги
+`shakirov.html` файлынан өзгөртүп, `python tools/build_shakirov.py` иштетиңиз.
 
-Бул папка `index.html` жана `tools/build_shakirov.py` аркылуу автоматтык
-түрдө түзүлөт, кол менен түзөтүлбөйт. Vercel'де өзүнчө долбоор катары
-жайгаштырылат: Root Directory = `shakirov-site`.
+Vercel'де өзүнчө долбоор катары жайгаштырылат: Root Directory = `shakirov-site`.
 '''
 
 
 def main() -> None:
-    html = SOURCE.read_text(encoding='utf-8')
-    if SIGN_FROM not in html:
-        raise SystemExit('index.html ичинен кол коюу табылган жок — скрипт жаңыртылсын')
-    signed = html.replace(SIGN_FROM, SIGN_TO)
-
-    PAGE.write_text(signed.replace('<!doctype html>\n', NOTE, 1), encoding='utf-8')
+    html = PAGE.read_text(encoding='utf-8')
+    if OLD_NOTE in html:
+        html = html.replace(OLD_NOTE, '')
+        PAGE.write_text(html, encoding='utf-8')
 
     SITE.mkdir(exist_ok=True)
     for name in COPY:
@@ -50,9 +36,9 @@ def main() -> None:
         if target.exists():
             shutil.rmtree(target)
         shutil.copytree(ROOT / name, target)
-    (SITE / 'index.html').write_text(signed, encoding='utf-8')
+    (SITE / 'index.html').write_text(html, encoding='utf-8')
     (SITE / 'README.md').write_text(README, encoding='utf-8')
-    print(f'{PAGE.name} жана {SITE.name}/ даяр')
+    print(f'{SITE.name}/ жаңыртылды')
 
 
 if __name__ == '__main__':

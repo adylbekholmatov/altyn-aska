@@ -30,16 +30,17 @@ python -m http.server 8010
 | Галереянын сүрөттөрү | `assets/render/` жана `js/main.js` → `RENDERS` |
 | Түстөр жана шрифттер | `css/style.css` → `:root` |
 
-## Эки версия (эки кол коюу)
+## Эки версия
 
-| Версия | Кат кимден | Дареги |
+| Версия | Файл | Дареги |
 |---|---|---|
-| `index.html` | Сатаров Кубанычбек Машрапович, «Агро-Майдан» ЖЧК | негизги сайт |
-| `shakirov.html` | Шакиров Байстан Куттугалиевич, «Алтын-Аска» ЖЧК | ошол эле сайттагы кошумча барак |
-| `shakirov-site/` | Шакиров Байстан Куттугалиевич | Vercel'деги өзүнчө долбоор (Root Directory = `shakirov-site`) |
+| «Агро-Майдан» ЖЧК | `index.html` | негизги сайт |
+| «Алтын-Аска» компаниясы | `shakirov.html` | ошол эле сайттагы кошумча барак |
+| «Алтын-Аска» компаниясы | `shakirov-site/` | Vercel'деги өзүнчө долбоор (Root Directory = `shakirov-site`) |
 
-`shakirov.html` жана `shakirov-site/` кол менен түзөтүлбөйт. `index.html`, `css/`, `js/`
-же `assets/` өзгөргөндөн кийин аларды кайра түзүңүз:
+`index.html` жана `shakirov.html` кол менен түзөтүлөт, ар бири өзүнчө.
+`shakirov-site/` кол менен түзөтүлбөйт: `shakirov.html`, `css/`, `js/` же `assets/`
+өзгөргөндөн кийин аны жаңыртыңыз:
 
 ```bash
 python tools/build_shakirov.py
