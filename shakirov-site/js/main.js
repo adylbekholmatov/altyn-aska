@@ -258,6 +258,17 @@
     }
   });
 
+  /* ---------- iPhone'до Apple картасы биринчи ---------- */
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const googleMapBtn = $('[data-map="google"]');
+  const appleMapBtn = $('[data-map="apple"]');
+  if (isIOS && googleMapBtn && appleMapBtn) {
+    googleMapBtn.classList.replace('btn--gold', 'btn--ghost');
+    appleMapBtn.classList.replace('btn--ghost', 'btn--gold');
+    googleMapBtn.before(appleMapBtn);
+  }
+
   /* ---------- Карта кыргыз тилинде ---------- */
   const map = $('#map');
   langListeners.push(() => {
